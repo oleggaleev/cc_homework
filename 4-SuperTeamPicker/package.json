@@ -1,0 +1,40 @@
+{
+  "name": "teampicker",
+  "version": "1.0.0",
+  "description": "we are picking teams",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon",
+    "debug": "nodemon --inspect=9229",
+    "repl": "nodemon --inspect=9222 repl.js",
+    "db:create": "createdb --echo teampicker_db",
+    "db:drop": "dropdb --echo --if-exists teampicker_db",
+    "db:migrate": "node db/migration.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oleggaleev/cc_homework.git"
+  },
+  "keywords": [
+    "team",
+    "picker"
+  ],
+  "author": "Oleg Galeev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oleggaleev/cc_homework/issues"
+  },
+  "homepage": "https://github.com/oleggaleev/cc_homework#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "ejs": "^2.5.7",
+    "express": "^4.16.1",
+    "knex": "^0.13.0",
+    "morgan": "^1.9.0",
+    "multer": "^1.3.0",
+    "pg": "^7.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.1"
+  }
+}

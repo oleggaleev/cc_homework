@@ -1,0 +1,21 @@
+<%- include('./partials/header') %>
+<div>
+
+      <% for (let cohort of cohorts) { %>
+
+
+        <div class="container-fluid">
+              <ul class='list-group'>
+                <li class='list-group-item'><strong><%= cohort.name %></strong></li>
+                <li class='list-group-item'><%= cohort.members %></li>
+
+              //  <img class="img-thumbnail" width="200px" height="100px"  src="<%= task.photo_path %>">
+              </ul>
+        </div>
+
+      <% } %>
+
+</div>
+
+
+<%- include('./partials/footer') %>
