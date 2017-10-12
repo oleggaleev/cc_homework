@@ -40,11 +40,16 @@
     </div>
 </form>
 
-<%if (result) { %>
- <% for (let each of result) { %>
-   <p><%= each %> </p>
- <%}%>
- <%}%>
-
+<div class="container-fluid">
+  <h1>Teams: </h1>
+      <ol class='list-group'>
+        <li class='list-group-item'>
+  <%if (result) { %>
+   <% for (let each of result) { %>
+     <p><%= each %> </p>
+   <%}%>
+   <%}%></li>
+ </ol>
+</div>
 
 <%- include('../partials/footer') %>

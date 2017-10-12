@@ -28,12 +28,9 @@ router.get('/cohorts', (request, response) => {
 
 router.get('/:id', (request, response) => {
 
-
-
-
-
   const {id} = request.params
   const {body} = request;
+
   console.log(request.query.count)
 
   kx
@@ -41,11 +38,14 @@ router.get('/:id', (request, response) => {
     .from('cohorts')
     .where({id}) // <-- syntax sugar for {id: id}
     .then(cohort => {
-      if(request.query.count){
+      if(request.query.count && request.query['randomizer'] == 'perteam'){
         let counting = request.query.count
-        console.log(cohort.members)
-        console.log(counting)
         let result = shuffle(cohort.members, counting)
+        response.render('cohorts/show', {cohort, result})
+
+      } else if (request.query.count && request.query['randomizer'] == 'teamcount') {
+        let counting = request.query.count
+        let result = shuffle2(cohort.members, counting)
         response.render('cohorts/show', {cohort, result})
 
       } else{
@@ -84,6 +84,26 @@ function shuffle(content, count) {
     return array2
 }
 
-
+function shuffle2(content, count) {
+   let array = content.split(',').sort(() => Math.random() - .5);
+   let rest = array.length % count
+   let restUsed = rest
+   let partLength = Math.floor(array.length / count)
+   let array2 = [];
+   for (let i = 0; i < array.length; i += partLength) {
+       let end = partLength + i
+       let add = false;
+       if (rest !== 0 && restUsed) {
+           end++
+           restUsed--
+           add = true;
+       }
+       array2.push(array.slice(i, end))
+       if (add) {
+           i++;
+       }
+   }
+   return array2
+}
 
 module.exports = router
