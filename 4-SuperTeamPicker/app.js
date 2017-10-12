@@ -1,6 +1,8 @@
 const Express = require('express')
 const path = require('path')
 const bodyParser = require('body-parser')
+const morgan = require('morgan')
+
 
 // 🛣 ROUTES
 const newPage = require('./routes/new')
@@ -11,14 +13,14 @@ const app = Express()
 
 app.set('view engine', 'ejs')
 
-// app.use(Express.static(path.join(__dirname, 'public')))
 app.use(Express.static(path.join(__dirname, 'public')))
 app.use(bodyParser.urlencoded({extended: false}))
-// morgan is a package for creating middleware functions that log
-// information about your app's requests and responses.
+app.use(morgan('dev'))
 
 
-app.use('/new', newPage)
+
+
+app.use('/cohorts/new', newPage)
 app.use('/', index)
 app.use('/cohorts', index)
 
