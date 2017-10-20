@@ -1,0 +1,18 @@
+<div class='container'>
+  <div class='blogpost'>
+    <h1><%= @post.title %></h1>
+  </div>
+</div>
+
+<img class='post-img' src='https://media.rbl.ms/image?u=%2Ffiles%2F2016%2F03%2F23%2F6359433764080908861480118860_guys.gif&ho=http%3A%2F%2Faz616578.vo.msecnd.net&s=739&h=95956bcf83132c6e62bec29f95cdc05873699bcd706c9ecc1c24e4e00419325c&size=980x&c=568329952'>
+
+<div class='container'>
+  <div class='blogpost'>
+    <article>
+      <p><%= @post.body %></p>
+    </article>
+  </div>
+</div>
+
+<button type="button" class="btn"><link><%= link_to 'Edit', edit_post_path(@post) %></link></button>
+<button type="button" class="btn"><%= link_to 'Delete', post_path(@post), method: :delete %></button>

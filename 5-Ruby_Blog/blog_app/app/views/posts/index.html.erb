@@ -1,0 +1,43 @@
+<div class="container">
+ <div class="row">
+      <div class="row col-8 justify-content-around">
+        <div class='card-block'>
+          <div class='card'>
+            <img class='card-img-top' src='https://cdn.scotch.io/3/PDihpPLaQ0yWqiEEseVZ_build-a-blog-with-ruby.png'>
+            <h2><%= link_to @featured.title, post_path(@featured) %></h1> <br />
+            <%= @featured.body %>
+          </div>
+        </div>
+      </div>
+
+      <div class='container col-4 d-flex align-self-start'>
+        <div class="col-12">
+          <h1>Most Liked</h1>
+              <ul class="list-group" style="margin: 1px">
+                <% @posters.each do |post| %>
+                <li class="list-group-item"><%= link_to post.title, post_path(post) %></li>
+                <% end %>
+              <ul>
+        </div>
+      </div>
+  </div>
+</div>
+
+
+
+<div class="container">
+ <div class="row">
+      <div class="row col-12 justify-content-between">
+
+        <% @posts.each do |post| %>
+          <div class='card-block'>
+            <div class='card' style="width:19rem;">
+
+              <img class='card-img-top' src='https://cdn.scotch.io/3/PDihpPLaQ0yWqiEEseVZ_build-a-blog-with-ruby.png'>
+              <%= link_to post.title, post_path(post) %> <br />
+              <%= post.body %>
+            </div>
+          </div>
+        <% end %>
+  </div>
+</div>
