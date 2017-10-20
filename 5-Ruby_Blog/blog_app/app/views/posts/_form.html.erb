@@ -1,0 +1,9 @@
+<h1>Please create new post below</h1>
+<div class='container'>
+  <%= bootstrap_form_for(@post) do |form| %>
+    <%= form.text_field :title, placeholder: "Your title" %>
+    <%= form.text_area :body, placeholder: "Your description" %>
+    <%= form.submit %>
+    <%= form.alert_message 'Please fix the errors beelou' %>
+  <% end %>
+</div>

@@ -1,0 +1,55 @@
+<%- include('../partials/header') %>
+
+
+
+<form
+  class="d-flex flex-column"
+  action="/cohorts/<%= cohort.id %>"
+  method='GET'
+>
+    <div class="container-fluid">
+          <ul class='list-group'>
+            <li class='list-group-item'>
+            <strong><h2><%= cohort.name %></h2></strong><br>
+            <%= cohort.members %><br>
+            </li>
+            <li class='list-group-item'>
+              <p>Method</p>
+              <div class="radio">
+                <label><input type="radio" name="randomizer" value="teamcount"> Team Count</label>
+              </div>
+              <div class="radio">
+                <label><input type="radio" name="randomizer" value="perteam"> Number Per Team</label>
+              </div>
+              <p>Quantity</p>
+              <div class="form-group">
+                <textarea
+                  class="form-control"
+                  rows='1'
+                  name='count'
+                ></textarea>
+              </div>
+              <input
+                class="btn btn-outline-primary align-self-start"
+                type='submit'
+                value='Assign Teams'
+              />
+
+            </li>
+          </ul>
+    </div>
+</form>
+
+<div class="container-fluid">
+  <h1>Teams: </h1>
+      <ol class='list-group'>
+        <li class='list-group-item'>
+  <%if (result) { %>
+   <% for (let each of result) { %>
+     <p><%= each %> </p>
+   <%}%>
+   <%}%></li>
+ </ol>
+</div>
+
+<%- include('../partials/footer') %>

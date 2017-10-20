@@ -1,0 +1,31 @@
+<%- include('./partials/header') %>
+<div>
+
+      <% for (let cohort of cohorts) { %>
+
+    <form
+      class="d-flex flex-column"
+      action="/cohorts/<%= cohort.id %>"
+      enctype="multipart/form-data"
+      method='GET'
+    >
+        <div class="container-fluid">
+              <ul class='list-group'>
+                <li class='list-group-item'><img class="img-thumbnail rounded-circle" width="100px" height="50px"  src="<%= cohort.logo_url %>">
+                <strong><%= cohort.name %></strong><br>
+                <%= cohort.members %><br>
+                <input
+                  class="btn btn-outline-primary align-self-start"
+                  type='submit'
+                  value='Show Cohort'
+                /></li>
+              </ul>
+        </div>
+    </form>
+
+      <% } %>
+
+</div>
+
+
+<%- include('./partials/footer') %>
