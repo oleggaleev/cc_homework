@@ -31,15 +31,51 @@
             <%= link_to('Create new post', new_post_path, class: "nav-link") %>
           </li>
         </ul>
+
         <form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
+
+        <ul class="navbar-nav">
+          <% if user_signed_in? %>
+            Hello <%= link_to current_user.full_name, edit_user_path(current_user) %>,
+            <%= link_to "Logout", session_path, method: :delete,
+                      data: {confirm: "are you sure you want to log out?"}%>
+          <% else %>
+
+            <li class="nav-item list-group-item"><%= link_to "Login", new_session_path %> </li>
+
+            <li class="nav-item list-group-item"><%= link_to "Sign Up", new_user_path %></li>
+          <% end %>
+        </ul>
       </div>
     </nav>
 
-    <!-- <div class="containter-flex d-flex col-12 justify-content-center"> -->
-        <%= yield %>
-    <!-- </div> -->
+    <div class="container-fluid">
+      <% if flash[:notice].present? %>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <%= flash[:notice] %>
+        </div>
+      <% end %>
+
+      <% if flash[:alert].present? %>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <%= flash[:alert] %>
+        </div>
+      <% end %>
+
+
+    <%= yield %>
+
   </body>
 </html>
+
+
+<hr>

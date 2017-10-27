@@ -1,8 +1,11 @@
 <div class='container'>
   <div class='blogpost'>
     <h1><%= @post.title %></h1>
+    <p><strong>Created At:</strong> <%= time_ago_in_words(@post.created_at) + " ago" %></p>
   </div>
 </div>
+
+
 
 <img class='post-img' src='https://media.rbl.ms/image?u=%2Ffiles%2F2016%2F03%2F23%2F6359433764080908861480118860_guys.gif&ho=http%3A%2F%2Faz616578.vo.msecnd.net&s=739&h=95956bcf83132c6e62bec29f95cdc05873699bcd706c9ecc1c24e4e00419325c&size=980x&c=568329952'>
 
@@ -14,5 +17,44 @@
   </div>
 </div>
 
+<% if user_signed_in? && can?(:manage, @post) %>
 <button type="button" class="btn"><link><%= link_to 'Edit', edit_post_path(@post) %></link></button>
-<button type="button" class="btn"><%= link_to 'Delete', post_path(@post), method: :delete %></button>
+<button type="button" class="btn">  <%= link_to(
+    'Delete',
+    post_path(@post),
+    data: {confirm: 'Are you sure?'},
+    method: :delete
+  ) %></button>
+<% end %>
+
+
+
+<h2>Comments</h2>
+<%= form_for [@post, @comment] do |f| %>
+  <% if @comment.errors.present? %>
+    <p>
+      <%= @comment.errors.full_messages.join(', ') %>
+    </p>
+  <% end %>
+  <div>
+    <%= f.text_area :body %>
+  </div>
+  <%= f.submit %>
+<% end %>
+
+<div class="comment-list">
+  <% @post.comments.each do |comment| %>
+    <div class="comment-list-item">
+      <p><%= comment.body %></p>
+      <p>By <%= comment.user&.full_name %></p>
+      <% if can?(:destroy, comment) %>
+        <%= link_to(
+          'Delete',
+          post_comment_path(@post, comment),
+          data: {confirm: 'Are you sure?'},
+          method: :delete
+        ) %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

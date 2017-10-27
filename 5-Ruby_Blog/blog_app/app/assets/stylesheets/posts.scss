@@ -29,8 +29,9 @@ article {
 //   margin: 15px;
 // }
 
-.card {
+.second-posts {
   overflow: auto;
+  height: 250px;
 }
 
 .card-block {
@@ -40,4 +41,8 @@ article {
 
 ul > li {
   list-style-type: none;
+}
+
+.form-inline {
+  margin-right: 20px;
 }
