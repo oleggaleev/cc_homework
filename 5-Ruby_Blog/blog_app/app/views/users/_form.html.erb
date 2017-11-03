@@ -1,0 +1,14 @@
+<h1>Please change user information below</h1>
+<div class='container'>
+  <%= bootstrap_form_for(@user) do |form| %>
+    <%= form.text_field :first_name, placeholder: "Your name" %>
+    <%= form.text_field :last_name, placeholder: "Your last name" %>
+    <%= form.email_field :email, placeholder: "Your email" %>
+    <%= form.submit %>
+    <button type="button" class="btn">  <%= link_to(
+        'Change Password',
+        edit_password_user_path ) %>
+    </button>
+    <%= form.alert_message 'Please fix the errors beelou' %>
+  <% end %>
+</div>

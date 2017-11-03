@@ -1,0 +1,15 @@
+<h1>Please change user information below</h1>
+<div class='container'>
+  <%= bootstrap_form_for(@session) do |form| %>
+
+    <%= form.password_field :current_password %>
+    <%= form.password_field :password %>
+    <%= form.password_field :password_confirmation %>
+    <%= form.submit %>
+    <button type="button" class="btn">  <%= link_to(
+        'Change Password',
+        password_resets_new_path ) %>
+    </button>
+    <%= form.alert_message 'Please fix the errors beelou' %>
+  <% end %>
+</div>

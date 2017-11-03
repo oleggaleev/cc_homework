@@ -1,0 +1,48 @@
+// Place all the styles related to the posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+h1 {
+  color: black;
+}
+
+article {
+  text-align: justify;
+}
+
+.container {
+  align-self: center;
+}
+
+.blogpost {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.post-img {
+  width: 100%
+}
+
+// .container {
+//   margin: 15px;
+// }
+
+.second-posts {
+  overflow: auto;
+  height: 250px;
+}
+
+.card-block {
+  margin: 15px;
+  overflow: auto;
+}
+
+ul > li {
+  list-style-type: none;
+}
+
+.form-inline {
+  margin-right: 20px;
+}

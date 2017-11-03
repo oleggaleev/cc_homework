@@ -1,0 +1,26 @@
+<h1>Please Sign Up</h1>
+<% @user.errors.any? %>
+  <ul>
+    <% @user.errors.full_messages.each do |msg|%>
+      <li> <<%= msg %> </li>
+    <% end %>
+  </ul>
+
+  <%= bootstrap_form_for(@user) do |f| %>
+  <div>
+    <%= f.text_field :first_name %>
+  </div>
+  <div>
+    <%= f.text_field :last_name %>
+  </div>
+  <div>
+    <%= f.email_field :email %>
+  </div>
+  <div>
+    <%= f.password_field :password %>
+  </div>
+  <div>
+    <%= f.password_field :password_confirmation %>
+  </div>
+  <%= f.submit %>
+<% end %>
